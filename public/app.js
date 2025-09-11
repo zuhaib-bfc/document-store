@@ -9,7 +9,91 @@ class DocumentStore {
 
     async init() {
         this.bindEvents();
+        this.initMermaid();
         await this.loadDocumentTree();
+    }
+
+    initMermaid() {
+        // Initialize Mermaid with configuration
+        if (window.mermaid) {
+            mermaid.initialize({
+                startOnLoad: false,
+                theme: 'default',
+                securityLevel: 'loose',
+                fontFamily: 'inherit'
+            });
+        }
+    }
+
+    async processMermaidDiagrams(container) {
+        if (!window.mermaid) {
+            console.log('Mermaid not available');
+            return;
+        }
+
+        // Find all code blocks with language 'mermaid'
+        const mermaidBlocks = container.querySelectorAll('pre code.language-mermaid');
+        console.log(`Found ${mermaidBlocks.length} mermaid blocks`);
+        
+        for (let i = 0; i < mermaidBlocks.length; i++) {
+            const codeBlock = mermaidBlocks[i];
+            const preElement = codeBlock.parentElement;
+            const parentNode = preElement ? preElement.parentElement : null;
+            const mermaidCode = codeBlock.textContent.trim();
+            
+            console.log(`Processing mermaid block ${i + 1}:`, mermaidCode.substring(0, 50) + '...');
+            
+            if (!parentNode) {
+                console.error('No parent node found for mermaid block');
+                continue;
+            }
+            
+            try {
+                // Create a unique ID for this diagram
+                const diagramId = `mermaid-diagram-${Date.now()}-${i}`;
+                
+                // Create a div to hold the mermaid diagram
+                const mermaidDiv = document.createElement('div');
+                mermaidDiv.id = diagramId;
+                mermaidDiv.className = 'mermaid-diagram';
+                mermaidDiv.style.textAlign = 'center';
+                mermaidDiv.style.margin = '20px 0';
+                
+                // Render the mermaid diagram first
+                const { svg } = await mermaid.render(diagramId + '-svg', mermaidCode);
+                mermaidDiv.innerHTML = svg;
+                
+                // Replace the pre/code block with the mermaid div
+                parentNode.replaceChild(mermaidDiv, preElement);
+                
+                console.log(`Successfully rendered mermaid diagram ${i + 1}`);
+                
+            } catch (error) {
+                console.error('Error rendering Mermaid diagram:', error);
+                // If rendering fails, show the original code block with an error message
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'mermaid-error';
+                errorDiv.style.border = '1px solid #e53e3e';
+                errorDiv.style.borderRadius = '4px';
+                errorDiv.style.padding = '10px';
+                errorDiv.style.margin = '10px 0';
+                errorDiv.style.backgroundColor = '#fed7d7';
+                errorDiv.innerHTML = `
+                    <strong>Mermaid Diagram Error:</strong><br>
+                    <code style="background: #fff; padding: 2px 4px; border-radius: 2px;">${error.message}</code>
+                    <details style="margin-top: 10px;">
+                        <summary>Show diagram code</summary>
+                        <pre style="background: #f7fafc; padding: 10px; border-radius: 4px; margin-top: 5px;"><code>${mermaidCode}</code></pre>
+                    </details>
+                `;
+                
+                try {
+                    parentNode.replaceChild(errorDiv, preElement);
+                } catch (replaceError) {
+                    console.error('Error replacing element with error div:', replaceError);
+                }
+            }
+        }
     }
 
     bindEvents() {
@@ -185,6 +269,9 @@ class DocumentStore {
             if (window.Prism) {
                 Prism.highlightAllUnder(documentContent);
             }
+            
+            // Process Mermaid diagrams
+            await this.processMermaidDiagrams(documentContent);
             
             // Scroll to top
             documentContent.scrollTop = 0;
