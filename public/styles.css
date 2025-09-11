@@ -580,7 +580,7 @@ body {
 /* Dark theme support for mermaid diagrams */
 @media (prefers-color-scheme: dark) {
     .mermaid-diagram {
-        background: #2d3748;
+        background: #dbe8ff;
         border-color: #4a5568;
     }
 }
