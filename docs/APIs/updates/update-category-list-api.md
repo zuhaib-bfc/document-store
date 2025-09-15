@@ -2,33 +2,21 @@
 
 To add a query parameter to get categories based on `asset_code`.
 
+### API Updates
 
-### Current API
+| | **URL**  |**Method**  | **Query Param**  
+| ---  |--- | --- | --- |
+| **Current API** |product/get-categoryTypes-list | GET | None|
+| **Updated API** | product/get-categoryTypes-list?asset_code=1 | GET | asset_code=2 |
 
-**URL**  
-product/get-categoryTypes-list
-
-**Method**  
-GET
-
-**Query Param**  
-None
-
-### Updated API
-
-**URL**  
-product/get-categoryTypes-list?asset_code=1
-
-**Method**  
-GET
-
-**Query Param**  
-asset_code=2
-
----
+### Authorization
+```
+Bearer - Auth token
+```
 
 ### Sample Request
-`GET: https://prodigypro-new.bfcsofttech.in/api/v2/product/get-categoryTypes-list?asset_code=2`
+`GET:` https://prodigypro-new.bfcsofttech.in/api/v2/product/get-categoryTypes-list?asset_code=2
+
 ### Sample Response
 ```
 { 
@@ -111,13 +99,13 @@ asset_code=2
   ] 
 }
 ```
-
-**Note**
+--- 
+**Please Note**
 The API should also work without query parameter and should return all the categories in this case, to maintain compatibility with older versions.
 
 ### Old Sample Request (Test Case)
 
-GET: https://prodigypro-new.bfcsofttech.in/api/v2/product/get-categoryTypes-list
+`GET:` https://prodigypro-new.bfcsofttech.in/api/v2/product/get-categoryTypes-list
 
 ### Sample Response
 ```
