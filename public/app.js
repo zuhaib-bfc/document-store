@@ -260,7 +260,7 @@ class DocumentStore {
 
         // Show loading state
         documentContent.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i> Loading document...</div>';
-        documentPath.textContent = path;
+        documentPath.textContent = path.replaceAll("%20","-");
 
         try {
             const response = await fetch(`/api/docs/${path}`);
