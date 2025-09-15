@@ -11,6 +11,15 @@ class DocumentStore {
         this.bindEvents();
         this.initMermaid();
         await this.loadDocumentTree();
+        const path = this.extractCurrentPath();
+        if(path !== '' && path !== '/') {
+            this.loadDocument(path);
+        }
+    }
+
+    extractCurrentPath() {
+    // Get the path from the current page URL and remove the leading slash
+    return window.location.pathname.replace(/^\/+/, '');
     }
 
     initMermaid() {
@@ -260,6 +269,7 @@ class DocumentStore {
             }
 
             const document = await response.json();
+            window.history.pushState({}, '', `/${document.path}`);
             this.currentDocument = document;
             
             // Render the HTML content
