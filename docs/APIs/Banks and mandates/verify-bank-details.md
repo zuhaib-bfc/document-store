@@ -10,12 +10,9 @@ Bearer - Auth Token
 
 ```
 {
-    "account_number": "123456789",
-    "account_name": "John Doe",
-    "account_type": "Saving",
-    "account_ifsc": "SBIN000123",
-    "account_branch": "Pune",
-    "bank_name": "State Bank of India"
+    "beneficiaryAccount": "123456789",
+    "beneficiaryName": "John Doe",
+    "beneficiaryIFSC": "SBIN000123",
 }
 ```
 

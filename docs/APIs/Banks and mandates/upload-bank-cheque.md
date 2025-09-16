@@ -10,7 +10,8 @@ Bearer - Auth Token
 #### Sample Request body:
 ```
 {
-  "fileName": "image.jpg",
+  "ucc" : "50002933221"
+  "fileName": "2183189023.jpg", // account-number
   "fileType": "image/jpeg",
   "data": "/9j/4AAQSkZJRgABAQEASABIAAD..."   // base64 encoded image data
 }
