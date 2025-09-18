@@ -25,7 +25,7 @@ Bearer - Auth Token
 https://prodigypro-new.bfcsofttech.in/api/v2/statements/get-all-folios?ucc=BFC00002
 ```
 
-#### Sample Response
+#### Sample Response `(200)`
 ```json
 {
     "success":true,
