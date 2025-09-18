@@ -26,7 +26,7 @@ https://prodigypro-new.bfcsofttech.in/api/v2/statements/get-all-folios?ucc=BFC00
 ```
 
 #### Sample Response
-```
+```json
 {
     "success":true,
     "data": [
