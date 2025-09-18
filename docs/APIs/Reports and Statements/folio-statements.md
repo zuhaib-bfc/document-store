@@ -20,10 +20,8 @@ Bearer - Auth Token
 
 
 #### Sample Request
-**Method:** `GET`
-```
-https://prodigypro-new.bfcsofttech.in/api/v2/statements/get-all-folios?ucc=BFC00002
-```
+`GET:` https://prodigypro-new.bfcsofttech.in/api/v2/statements/get-all-folios?ucc=BFC00002
+
 
 #### Sample Response `(200)`
 ```json
