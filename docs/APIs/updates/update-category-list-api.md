@@ -18,7 +18,7 @@ Bearer - Auth token
 `GET:` https://prodigypro-new.bfcsofttech.in/api/v2/product/get-categoryTypes-list?asset_code=2
 
 ### Sample Response
-```
+``` json
 { 
   "success": true, 
   "msg": "Success...!!!", 
@@ -108,7 +108,7 @@ The API should also work without query parameter and should return all the categ
 `GET:` https://prodigypro-new.bfcsofttech.in/api/v2/product/get-categoryTypes-list
 
 ### Sample Response
-```
+```json
 {
   "success": true, 
   "msg": "Success...!!!", 

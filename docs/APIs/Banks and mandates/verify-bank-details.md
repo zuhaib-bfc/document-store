@@ -8,7 +8,7 @@ Bearer - Auth Token
 
 ### Sample Request Body:
 
-```
+```json
 {
     "beneficiaryAccount": "123456789",
     "beneficiaryName": "John Doe",
@@ -18,7 +18,7 @@ Bearer - Auth Token
 
 ### Sample Response Body:
 **Status Code:** `200`
-```
+```json
 {
    "success": true,
 }
@@ -28,7 +28,7 @@ Bearer - Auth Token
 in case of name mismatch
 
 **Status Code:** `400`
-```
+```json
 {
    "success": false,
 }
