@@ -1,5 +1,5 @@
 ## Folio Statement Reports
-This document describes the APIs needed for fetching the folio and folio-wise investments
+This document describes the APIs needed for fetching the folios and folio-wise investments
 
 ### 1. Get All Folios
 

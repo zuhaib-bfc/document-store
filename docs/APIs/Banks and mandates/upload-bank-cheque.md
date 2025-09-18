@@ -11,6 +11,9 @@ Bearer - Auth Token
 ```json
 {
   "ucc" : "50002933221",
+  "account_type":"SB",
+  "account_number":"38743151942",
+  "ifsc_code":"SBIN0007275",
   "fileName": "2183189023.jpg", // account-number
   "fileType": "image/jpeg",
   "data": "/9j/4AAQSkZJRgABAQEASABIAAD..."   // base64 encoded image data
