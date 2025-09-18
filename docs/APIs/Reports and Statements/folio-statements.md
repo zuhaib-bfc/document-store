@@ -3,9 +3,9 @@ This document describes the APIs needed for fetching the folio and folio-wise in
 
 ### 1. Get All Folios
 
-#### Method
+#### Route
 ```
-GET
+/statements/get-all-folios
 ```
 
 #### Query Parameter
@@ -18,12 +18,9 @@ ucc = BFC00002
 Bearer - Auth Token
 ```
 
-#### Route
-```
-/statements/get-all-folios
-```
 
 #### Sample Request
+**Method:** `GET`
 ```
 https://prodigypro-new.bfcsofttech.in/api/v2/statements/get-all-folios?ucc=BFC00002
 ```
